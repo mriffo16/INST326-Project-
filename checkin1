@@ -53,7 +53,6 @@ questions ={
         200: "What country is Rihanna from?",
         300: "Before becoming a solo artist, Beyoncé was part of the group Destiny’s Child. Name the two other members."
     }
-
 }
 def ai_players():
 def winner():
