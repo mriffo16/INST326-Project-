@@ -22,6 +22,12 @@ def category():
 
     return category, point_value
 
+#Function to display the points each player currently has
+def display_pointboard(self):
+        print("POINTS:")
+        for player, score in self.points.items():
+            print(f"Player {player}: {points}")
+
 # Function to randomly select a question
 def select_question():
     # Select a random category and point value
@@ -76,8 +82,5 @@ class Jeopardy:
         self.scores = {1: 0, 2: 0}
         self.current_player = 1
 
-def display_gameboard(self):
-        print("GAME BOARD:")
-        for player, score in self.scores.items():
-            print(f"Player {player}: {score}")
+
 
