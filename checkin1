@@ -6,5 +6,25 @@ def category():
   print("Select point value: 100, 200, or 300: ")
 
 def ai_players():
-
 def winner():
+
+questions ={
+    "Movies":{
+        100: "If you watch the Marvel movies in chronological order, which movie would you start with?",
+        200: "What was the first feature-length animated movie ever released?",
+        300: "What is the first animated movie made entirely by CGI (computer generated imagery)?",
+    },
+
+    "TV Shows":{
+        100: "What is the highest rated television show on IMDB?",
+        200: "Spongebob Squarepants was originally going to be named what?",
+        300: "What is the longest running game show of all time?",
+    },
+
+    "Music":{      
+        100: " Who performed at the Super Bowl halftime show in 2021?",
+        200: "What country is Rihanna from?",
+        300: "Before becoming a solo artist, Beyoncé was part of the group Destiny’s Child. Name the two other members."
+    }
+
+}
