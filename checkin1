@@ -20,7 +20,7 @@ def category():
         else:
             print("Invalid point value. Please select 100, 200, or 300.")
 
-    return selected_category, selected_point_value
+    return category, point_value
 
 # Function to randomly select a question
 def select_question():
