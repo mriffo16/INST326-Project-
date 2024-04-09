@@ -28,3 +28,10 @@ questions ={
     }
 
 }
+
+class Jeopardy:
+    def __init__(self, categories, questions):
+        self.categories = categories
+        self.questions = questions
+        self.scores = {1: 0, 2: 0}
+        self.current_player = 1
