@@ -2,7 +2,7 @@ category = ["Movies", "TV Shows", "Pop Culture"]
 point_value = ["100", "200", "300']
 
 def category():
-  print("Select a category: Movies, TV Shows, or Pop Culture: ")
+  print("Select a category: Movies, TV Shows, or Music ")
   print("Select point value: 100, 200, or 300: ")
 
 def ai_players():
