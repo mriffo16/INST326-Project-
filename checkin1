@@ -5,8 +5,20 @@ def category():
   print("Select a category: Movies, TV Shows, or Music ")
   print("Select point value: 100, 200, or 300: ")
 
-def ai_players():
-def winner():
+
+
+# Function to randomly select a question
+def select_question():
+    # Select a random category and point value
+    selected_category = random.choice(categories)
+    selected_point_value = random.choice(point_values)
+    
+    # Retrieve the corresponding question from the questions dictionary
+    question = questions[selected_category][int(selected_point_value)]
+    
+    # Display the selected question
+    print("AI player selected the question:")
+    print(question)
 
 questions ={
     "Movies":{
@@ -28,7 +40,8 @@ questions ={
     }
 
 }
-
+def ai_players():
+def winner():
 class Jeopardy:
     def __init__(self, categories, questions):
         self.categories = categories
