@@ -2,10 +2,25 @@ category = ["Movies", "TV Shows", "Pop Culture"]
 point_value = ["100", "200", "300']
 
 def category():
-  print("Select a category: Movies, TV Shows, or Music ")
-  print("Select point value: 100, 200, or 300: ")
+    while True:
+        print("Select a category: Movies, TV Shows, or Music")
+        category = input("Category: ").capitalize()
 
+        if category in ["Movies", "TV Shows", "Music"]:
+            break
+        else:
+            print("Invalid category. Please select Movies, TV Shows, or Music.")
 
+    while True:
+        print("Select point value: 100, 200, or 300")
+        point_value = input("Point value: ")
+
+        if point_value in ["100", "200", "300"]:
+            break
+        else:
+            print("Invalid point value. Please select 100, 200, or 300.")
+
+    return selected_category, selected_point_value
 
 # Function to randomly select a question
 def select_question():
