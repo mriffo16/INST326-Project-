@@ -1,5 +1,5 @@
 category = ["Movies", "TV Shows", "Pop Culture"] 
-point_value = ["100", "200", "300']
+point_value = ["100", "200", "300"]
 
 def category():
     while True:
