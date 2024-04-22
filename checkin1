@@ -43,39 +43,23 @@ def select_question():
     print("AI player selected the question:")
     print(question)
 
-questions ={
-    "Movies":{
+questions = {
+    "Movies": {
         100: "If you watch the Marvel movies in chronological order, which movie would you start with?",
         200: "What was the first feature-length animated movie ever released?",
-        300: "What is the first animated movie made entirely by CGI (computer generated imagery)?",
-             if point_value in questions[category]:
-            break
-        else:
-            print("Invalid point value selected. Please re-enter")
+        300: "What is the first animated movie made entirely by CGI (computer-generated imagery)?"
     },
-
-    "TV Shows":{
-        100: "What is the highest rated television show on IMDB?",
+    "TV Shows": {
+        100: "What is the highest-rated television show on IMDB?",
         200: "Spongebob Squarepants was originally going to be named what?",
-        300: "What is the longest running game show of all time?",
-             if point_value in questions[category]:
-            break
-        else:
-            print("Invalid point value selected. Please re-enter")
+        300: "What is the longest-running game show of all time?"
     },
-
-    "Music":{      
-        100: " Who performed at the Super Bowl halftime show in 2021?",
+    "Music": {
+        100: "Who performed at the Super Bowl halftime show in 2021?",
         200: "What country is Rihanna from?",
-        300: "Before becoming a solo artist, Beyoncé was part of the group Destiny’s Child. Name the two other members."
-             if point_value in questions[category]:
-            break
-        else:
-            print("Invalid point value selected. Please re-enter")
+        300: "Before becoming a solo artist, Beyoncé was part of Destiny’s Child group. Name the two other members."
     }
 }
-def ai_players():
-def winner():
 
 class Jeopardy:
     def __init__(self, categories, questions):
