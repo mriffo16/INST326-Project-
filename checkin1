@@ -1,4 +1,19 @@
 import random 
+import pygame
+
+# Initialize Pygame
+pygame.init()
+
+# Set up screen
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 600
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+pygame.display.set_caption("Pygame Jeopardy")
+
+# Colors
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+RED = (255, 0, 0)
 
 category = ["Movies", "TV Shows", "Pop Culture"] 
 point_value = ["100", "200", "300"]
@@ -54,6 +69,7 @@ questions = {
     }
 }
 
+"""
 class Jeopardy:
     def __init__(self):
         self.scores = {1: 0, 2: 0}
@@ -73,3 +89,35 @@ class Jeopardy:
                 winner = player
         print(f"Player {winner} wins with a score of {max_score}!")
 
+"""
+scores = {1: 0, 2: 0}
+
+# Function to display the scores
+def display_scores():
+    font = pygame.font.Font(None, 36)
+    for player, score in scores.items():
+        text = font.render(f"Player {player}: {score}", True, BLACK)
+        screen.blit(text, (20, player * 40))
+
+# Function to display the question
+def display_question(category, point_value):
+    font = pygame.font.Font(None, 24)
+    question_text = questions[category][point_value]
+    text = font.render(question_text, True, BLACK)
+    screen.blit(text, (SCREEN_WIDTH // 2 - text.get_width() // 2, SCREEN_HEIGHT // 2 - text.get_height() // 2))
+
+# Main game loop
+running = True
+while running:
+    screen.fill(WHITE)
+    display_scores()
+    display_question("Movies", 100)  # Display a sample question
+    
+    # Handle events
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+    pygame.display.flip()
+
+pygame.quit()
