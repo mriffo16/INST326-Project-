@@ -64,4 +64,12 @@ class Jeopardy:
         for player, score in self.scores.items():
             print(f"Player {player}: {score}")
 
+   def winner(self):
+    max_score = -1
+    winner = None
+    for player, score in self.scores.items():
+        if score > max_score:
+            max_score = score
+            winner = player
+    print(f"Player {winner} wins with a score of {max_score}!")
 
