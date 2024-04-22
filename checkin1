@@ -1,3 +1,5 @@
+import random 
+
 category = ["Movies", "TV Shows", "Pop Culture"] 
 point_value = ["100", "200", "300"]
 
