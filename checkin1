@@ -3,7 +3,7 @@ import random
 category = ["Movies", "TV Shows", "Pop Culture"] 
 point_value = ["100", "200", "300"]
 
-def category():
+""" def category():
     while True:
         print("Select a category: Movies, TV Shows, or Music")
         category = input("Category: ").capitalize()
@@ -23,25 +23,18 @@ def category():
             print("Invalid point value. Please select 100, 200, or 300.")
 
     return category, point_value
-
+"""
 #Function to display the points each player currently has
 def display_pointboard(self):
         print("POINTS:")
         for player, score in self.points.items():
             print(f"Player {player}: {points}")
 
-# Function to randomly select a question
 def select_question():
-    # Select a random category and point value
     selected_category = random.choice(categories)
     selected_point_value = random.choice(point_values)
-    
-    # Retrieve the corresponding question from the questions dictionary
     question = questions[selected_category][int(selected_point_value)]
-    
-    # Display the selected question
-    print("AI player selected the question:")
-    print(question)
+    return question
 
 questions = {
     "Movies": {
