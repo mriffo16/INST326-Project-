@@ -1,145 +1,81 @@
-import random 
-import pygame
+import tkinter as tk
+import random
 
-# Initialize Pygame
-pygame.init()
 
-# Set up screen
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
-screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption("Pygame Jeopardy")
+class JeopardyGame:
+   def __init__(self, root):
+       self.root = root
+       self.root.title("Jeopardy")
+       self.categories = ["Python", "Movies", "TV Shows", "Music"]
+       self.questions = {
+           "Python": {
+               100: "What is a dictionary in Python?",
+               200: "What is a tuple in Python?",
+               300: "What is a list in Python?"
+           },
+           "Movies": {
+               100: "If you watch the Marvel movies in chronological order, which movie would you start with?",
+               200: "What was the first feature-length animated movie ever released?",
+               300: "What is the first animated movie made entirely by CGI (computer-generated imagery)?"
+           },
+           "TV shows ": {
+               100: "What is the highest-rated television show on IMDB?",
+               200: "Spongebob Squarepants was originally going to be named what?",
+               300: "What is the longest-running game show of all time?"
+           },
+           "Music": {
+               100: "Who performed at the Super Bowl halftime show in 2021?",
+               200: "What country is Rihanna from?",
+               300: "Before becoming a solo artist, Beyoncé was part of Destiny’s Child group. Name the two other members."
+           }
+       }
+       self.score = 0
 
-# Colors
-WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
-RED = (255, 0, 0)
 
-category = ["Movies", "TV Shows", "Pop Culture"] 
-point_value = ["100", "200", "300"]
+       self.setup_ui()
 
-""" def category():
-    while True:
-        print("Select a category: Movies, TV Shows, or Music")
-        category = input("Category: ").capitalize()
 
-        if category in ["Movies", "TV Shows", "Music"]:
-            break
-        else:
-            print("Invalid category. Please select Movies, TV Shows, or Music.")
+   def setup_ui(self):
+       for i, category in enumerate(self.categories):
+           tk.Label(self.root, text=category).grid(row=0, column=i, padx=10, pady=10)
+           for j, amount in enumerate([100, 200, 300]):
+               button = tk.Button(self.root, text="$" + str(amount), command=lambda c=category, a=amount: self.show_question(c, a))
+               button.grid(row=j+1, column=i, padx=10, pady=10)
 
-    while True:
-        print("Select point value: 100, 200, or 300")
-        point_value = input("Point value: ")
 
-        if point_value in ["100", "200", "300"]:
-            break
-        else:
-            print("Invalid point value. Please select 100, 200, or 300.")
+       self.score_label = tk.Label(self.root, text="Score: 0")
+       self.score_label.grid(row=len(self.questions)+1, columnspan=len(self.categories), padx=10, pady=10)
 
-    return category, point_value
-"""
-#Function to display the points each player currently has
-def display_pointboard(self):
-        print("POINTS:")
-        for player, score in self.points.items():
-            print(f"Player {player}: {points}")
 
-def select_question():
-    selected_category = random.choice(categories)
-    selected_point_value = random.choice(point_values)
-    question = questions[selected_category][int(selected_point_value)]
-    return question
+   def show_question(self, category, amount):
+       question = self.questions[category][amount]
+       self.current_category = category
+       self.current_question = question
+       self.current_amount = amount
 
-questions = {
-    "Movies": {
-        100: "If you watch the Marvel movies in chronological order, which movie would you start with?",
-        200: "What was the first feature-length animated movie ever released?",
-        300: "What is the first animated movie made entirely by CGI (computer-generated imagery)?"
-    },
-    "TV Shows": {
-        100: "What is the highest-rated television show on IMDB?",
-        200: "Spongebob Squarepants was originally going to be named what?",
-        300: "What is the longest-running game show of all time?"
-    },
-    "Music": {
-        100: "Who performed at the Super Bowl halftime show in 2021?",
-        200: "What country is Rihanna from?",
-        300: "Before becoming a solo artist, Beyoncé was part of Destiny’s Child group. Name the two other members."
-    }
-}
 
-"""
-class Jeopardy:
-    def __init__(self):
-        self.scores = {1: 0, 2: 0}
-        self.current_player = 1
+       question_window = tk.Toplevel(self.root)
+       tk.Label(question_window, text=question).pack()
+       self.answer_entry = tk.Entry(question_window)
+       self.answer_entry.pack()
+       submit_button = tk.Button(question_window, text="Submit", command=self.check_answer)
+       submit_button.pack()
 
-    def display_pointboard(self):
-        print("POINTS:")
-        for player, score in self.scores.items():
-            print(f"Player {player}: {score}")
 
-    def winner(self):
-        max_score = -1
-        winner = None
-        for player, score in self.scores.items():
-            if score > max_score:
-                max_score = score
-                winner = player
-        print(f"Player {winner} wins with a score of {max_score}!")
+   def check_answer(self):
+       user_answer = self.answer_entry.get()
+       if user_answer.lower() == self.questions[self.current_category][self.current_amount].lower():
+           self.score += self.current_amount
+       else:
+           self.score -= self.current_amount
 
-"""
-scores = {1: 0, 2: 0}
 
-# Function to display the scores
-def display_scores():
-    font = pygame.font.Font(None, 36)
-    for player, score in scores.items():
-        text = font.render(f"Player {player}: {score}", True, BLACK)
-        screen.blit(text, (20, player * 40))
+       self.score_label.config(text="Score: " + str(self.score))
 
-# Function to display the question
-def display_question(category, point_value):
-    font = pygame.font.Font(None, 24)
-    question_text = questions[category][point_value]
-    text = font.render(question_text, True, BLACK)
-    screen.blit(text, (SCREEN_WIDTH // 2 - text.get_width() // 2, SCREEN_HEIGHT // 2 - text.get_height() // 2))
 
-# Function to validate the answer
-def validate_answer(category, point_value, answer):
-    correct_answer = questions[category][point_value].lower()
-    return answer.lower() == correct_answer
+if __name__ == "__main__":
+   root = tk.Tk()
+   game = JeopardyGame(root)
+   root.mainloop()
 
-# Main game loop
-running = True
-while running:
-    screen.fill(WHITE)
-    display_scores()
-    display_question("Movies", 100)  # Display a sample question
-    
-    # Handle events
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
 
-# If a player has buzzed in
-    if buzz_in:
-        answer = input("Enter your answer: ") 
-
-        # Validate the answer
-        if right_answer("Movies", 100, answer):
-            scores[current_player] += 100  # Increase score for correct answer
-            print("Correct!")
-        else:
-            scores[current_player] -= 100  # Deduct points for wrong answer
-            print("Incorrect!")
-        
-        # Switch to the next player
-        current_player = 2 if current_player == 1 else 1
-        buzzed_in = False  # Reset buzzed_in flag
-    
-
-    pygame.display.flip()
-
-pygame.quit()
