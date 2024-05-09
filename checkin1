@@ -6,10 +6,8 @@ import unittest
 class JeopardyGame:
     def __init__(self, master):
         """ 
-         Initializes the Jeopardy game with the given root window.
-
-         Parameters:
-         4oot (tk.Tk): The root window for the game.
+         Initializes the Jeopardy game holds the questions that will be asked along with making the dictionary for the correct answers
+         Initializes the user and fake players score to 0
          """
         self.master = master
         self.master.title("Python Jeopardy")
@@ -71,7 +69,7 @@ class JeopardyGame:
         self.user_points_label = tk.Label(self.master, text="User Points: 0")
         self.user_points_label.grid(row=3, column=0, columnspan=2)
 
-        self.fake_player_points_label = tk.Label(self.master, text="Fake Player Points: 0")
+        self.fake_player_points_label = tk.Label(self.master, text="CPU Player Points: 0")
         self.fake_player_points_label.grid(row=4, column=0, columnspan=2)
 
     def update_board(self):
