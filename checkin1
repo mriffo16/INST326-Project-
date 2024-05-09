@@ -11,7 +11,7 @@ class JeopardyGame:
          Initializes the Jeopardy game with the given root window.
 
          Parameters:
-         4oot (tk.Tk): The root window for the game.
+         root (tk.Tk): The root window for the game.
          """
     self.root = root
     self.root.title("Jeopardy")
@@ -128,5 +128,6 @@ def test_check_answer(self, ai_answer):
         self.game.answer_entry.insert(0, "Mutable")
         self.game.check_answer("Python", 100)
         self.assertEqual(self.game.score[self.game.current_player], 100)
+
 
 
