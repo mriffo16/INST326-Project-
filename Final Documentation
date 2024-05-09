@@ -1,0 +1,15 @@
+Documentation 
+	For our project, we decided to code a Jeopardy game. This game has been implemented with various categories, each containing questions of different point values. When the code is run, a display board pops up, similar to the concept seen on Jeopardy. You can click on the specific box you want, depending on the category and point value that you chose. A question will pop up, allowing you to type in your answer and submit it for testing. 
+	Once in the directory containing the Python file, players will type “python3 jeopardy_game.py”, and then press Enter. After running the program the Jeopardy game interface will appear. 
+The game interface consists of two drop-boxes, one to select the category and one for the point value. Once players make their selections, they will press “pick”, which will then display the corresponding question. Once a question is displayed, players will press “ok”, the interface will then display if the AI player got the question correct or not and adjust the AI player's score accordingly. The player will then be asked if they want to answer the question. If the player selects “yes” they will be instructed to type their answer. If the player selects “no” they will be directed back to the drop boxes to make a new selection. The program will check if the answer is correct and update the score accordingly. The program displays the score for each player in real time. The score is updated based on correct and incorrect answers submitted by the players. To exit the game, players can close the window of the graphical user interface (GUI).
+Bibliography (MLA)
+Encompass Health Staff. (2023, March 9). Brain games to prevent dementia - Encompass Health. Encompass Health Connect. 
+https://blog.encompasshealth.com/2019/11/15/brain-games-to-prevent-dementia
+Note: This source gave us an insight into popular games, helping us brainstorm potential games to code. We wanted to create an enjoyable and interactive game for the user. 
+
+McGugan, Will. Beginning game development with Python and Pygame: from novice to professional. Apress, 2007.
+Note: This source helped us understand the functions of pygame, allowing us to implement it into our project.
+
+Sweigart, Al. Invent your own computer games with python. No Starch Press, 2016.
+Note: This source was very informative, as we gained a background on game development. It helped us create a roadmap of what we wanted to accomplish.
+
