@@ -100,10 +100,11 @@ class JeopardyGame:
         if CPU_player_decision == 1:
             self.CPU_player_points += question_amount
             self.CPU_player_points_label.config(text=f"CPU Player Points: {self.CPU_player_points}")
-            messagebox.showinfo("CPU Player", f"{self.CPU_player} got the answer right and earned {question_amount} points!")
+            messagebox.showinfo("CPU Player", f"{self.CPU_player} got the answer right!! CPU has earned {question_amount} points!")
 
         # Prompt user for answer
-        user_answer = messagebox.askyesno("Your Turn", "Do you want to answer the question?")
+        # .askyesno creates the yes and no message box prompt
+        user_answer = messagebox.askyesno("It's your Turn!!", "Would you like to answer the question?")
         if user_answer:
             user_response = simpledialog.askstring("Your Answer", "Enter your answer:")
             if user_response and user_response.lower() == answer.lower():
@@ -111,7 +112,7 @@ class JeopardyGame:
                 self.user_points_label.config(text=f"User Points: {self.user_points}")
                 messagebox.showinfo("Correct", f"Correct! You earned {question_amount} points!")
             else:
-                messagebox.showinfo("Incorrect", f"Sorry, the correct answer is: {answer}")
+                messagebox.showinfo("Incorrect", f"Oh no, the correct answer is: {answer}")
 
         self.current_player = "User"  # Reset current player to user for the next turn
         self.update_board()
