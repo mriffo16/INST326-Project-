@@ -7,12 +7,13 @@ class JeopardyGame:
     def __init__(self, master):
         """ 
          Initializes the Jeopardy game holds the questions that will be asked along with making the dictionary for the correct answers
-         Initializes the user and fake players score to 0
+         Initializes the user and CPU players score to 0
          """
         self.master = master
         self.master.title("Python Jeopardy")
         self.categories = ["Python", "Movies", "TV Shows", "Music"]
         self.questions = {
+#Coding a few of the questions in dictionaries attaching each question to a value amount 
             "Python": {100: "What is a dictionary in Python?",
                        200: "What is a tuple in Python?",
                        300: "What is a list in Python?"},
@@ -40,9 +41,11 @@ class JeopardyGame:
                       200: "Barbados",
                       300: "Kelly Rowland and Michelle Williams"}
         }
+# creating the Players 
+#creating the gui board 
         self.current_player = "User"
-        self.fake_player = "Computer"
-        self.fake_player_points = 0
+        self.CPU_player = "Computer"
+        self.CPU_player_points = 0
         self.user_points = 0
         self.create_widgets()
         self.update_board()
@@ -53,7 +56,7 @@ class JeopardyGame:
         """
         self.label = tk.Label(self.master, text="Choose a question:")
         self.label.grid(row=0, column=0, columnspan=2, pady=10)
-
+# creating the game tab/menu and placing the questions within each tab 
         self.category_var = tk.StringVar(self.master)
         self.category_var.set(self.categories[0])
         self.category_menu = tk.OptionMenu(self.master, self.category_var, *self.categories)
@@ -62,15 +65,15 @@ class JeopardyGame:
         self.question_var = tk.StringVar(self.master)
         self.question_menu = tk.OptionMenu(self.master, self.question_var, "")
         self.question_menu.grid(row=1, column=1)
-
+# trying to get the buttons to work  when you pick an option a question should come up 
         self.pick_button = tk.Button(self.master, text="Pick", command=self.pick_question)
         self.pick_button.grid(row=2, column=0, columnspan=2, pady=10)
-
+# Labeling the player and CPUs scoreboard on the gui 
         self.user_points_label = tk.Label(self.master, text="User Points: 0")
         self.user_points_label.grid(row=3, column=0, columnspan=2)
 
-        self.fake_player_points_label = tk.Label(self.master, text="CPU Player Points: 0")
-        self.fake_player_points_label.grid(row=4, column=0, columnspan=2)
+        self.CPU_player_points_label = tk.Label(self.master, text="CPU Player Points: 0")
+        self.CPU_player_points_label.grid(row=4, column=0, columnspan=2)
 
     def update_board(self):
         """
@@ -91,12 +94,13 @@ class JeopardyGame:
         answer = self.answers[category][question_amount]
         messagebox.showinfo("Question", question)
 
-        # Simulate fake player's turn
-        fake_player_decision = random.randint(1, 2)
-        if fake_player_decision == 1:
-            self.fake_player_points += question_amount
-            self.fake_player_points_label.config(text=f"Fake Player Points: {self.fake_player_points}")
-            messagebox.showinfo("Fake Player", f"{self.fake_player} got the answer right and earned {question_amount} points!")
+        # Simulate CPU player's turn by having the computer randomly select a number between 0-3 if 1
+        # is picked then the CPU gets the answer correct. CPU should not always get the correct answer 
+        CPU_player_decision = random.randint(0, 3)
+        if CPU_player_decision == 1:
+            self.CPU_player_points += question_amount
+            self.CPU_player_points_label.config(text=f"CPU Player Points: {self.CPU_player_points}")
+            messagebox.showinfo("CPU Player", f"{self.CPU_player} got the answer right and earned {question_amount} points!")
 
         # Prompt user for answer
         user_answer = messagebox.askyesno("Your Turn", "Do you want to answer the question?")
